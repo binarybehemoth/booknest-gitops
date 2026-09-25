@@ -1,0 +1,4 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: { name: api-config, labels: { app: booknest, tier: api } }
+data: { PGHOST: postgres, PGPORT: "5432", PGDATABASE: booknest, NODE_ENV: production }

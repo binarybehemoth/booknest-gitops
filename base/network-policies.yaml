@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: { name: postgres, labels: { app: booknest } }
+spec:
+  podSelector: { matchLabels: { tier: db } }
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - podSelector: { matchLabels: { tier: api } }
+    - podSelector:
+        matchExpressions: [{ key: batch.kubernetes.io/job-name, operator: Exists }]
+    ports: [{ port: 5432 }]
