@@ -9,4 +9,4 @@ spec:
     path: production
   destination: { server: https://kubernetes.default.svc, namespace: booknest }
   syncPolicy:
-    automated: { prune: true, selfHeal: true }   # apply commits, delete removed objects, undo drift
+    automated: { prune: true, selfHeal: true }   # apply, prune, undo drift
